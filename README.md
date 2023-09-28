@@ -13,3 +13,6 @@ Playlist portion will be on the left side of the screen while JS music player wi
 
 references for making JS music player
 https://www.geeksforgeeks.org/create-a-music-player-using-javascript/
+
+trello
+https://trello.com/b/7j2JK8Nm/project-3
