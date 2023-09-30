@@ -16,6 +16,7 @@ function App() {
     <div className="App">
       <h1> Decibel </h1>
       <SearchBar onSearch={handleSearch} />
+
     </div>
   );
 }
