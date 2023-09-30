@@ -1,16 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 import axios from "axios";
-import SearchBar from './components/SearchBar';
+import SearchBar from "./components/SearchBar";
+import { useState } from "react";
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
 
   const searchSpotify = (query) => {
-    const apiUrl = `https://api.spotify.com/v1/search?q=${query}&type=track`; 
+    const apiUrl = `https://api.spotify.com/v1/search?q=${query}&type=track`;
 
-    // Simulate an API call
-    axios.get(apiUrl)
+    axios
+      .get(apiUrl)
       .then((response) => {
         setSearchResults(response.data);
       })
@@ -19,16 +20,16 @@ function App() {
       });
   };
 
-  
   return (
     <div className="App">
       <h1> Decibel </h1>
-      <SearchBar onSearch={performSearch} />
-      
+      <SearchBar onSearch={searchSpotify} />
+
       <h2>Search Results:</h2>
       <ul>
-        {searchResults.map((result, index) => (
-          <li key={index}>{result}</li>
+        {searchResults.map((item, index) => (
+          <li key={index}>{item.artist}</li>
+          <li key={index}>{item.track}</li>
         ))}
       </ul>
     </div>
