@@ -3,13 +3,14 @@ import { useState } from "react";
 
 const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
-  const handleInputChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
+  const handleInputChange = async (event) => {
+    const newSearchTerm = event.target.value;
+    setSearchResults(newSearchTerm);
 
-  const handleSearch = () => {
-    onSearch(searchTerm);
+    const results = await onSearch(newSearchTerm);
+    setSearchResults(results);
   };
 
   return (
@@ -18,9 +19,13 @@ const SearchBar = ({ onSearch }) => {
         type="text"
         placeholder="Search..."
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={handleInputChange}
       />
-      <button onClick={handleSearch}>Search</button>
+      <ul>
+        {searchResults.map((result) => (
+          <li key={result.id}>{result.track}</li>
+        ))}
+      </ul>
     </div>
   );
 };
