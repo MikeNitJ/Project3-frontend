@@ -28,8 +28,7 @@ function App() {
       <h2>Search Results:</h2>
       <ul>
         {searchResults.map((item, index) => (
-          <li key={index}>{item.artist}</li>
-          <li key={index}>{item.track}</li>
+          <><li key={index}>{item.artist}</li><li key={index}>{item.track}</li></>
         ))}
       </ul>
     </div>
