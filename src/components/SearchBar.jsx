@@ -5,28 +5,39 @@ const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  const handleInputChange = async (event) => {
+  const handleInputChange = (event) => {
     const newSearchTerm = event.target.value;
-    setSearchResults(newSearchTerm);
+    setSearchTerm(newSearchTerm);
+  };
 
-    const results = await onSearch(newSearchTerm);
-    setSearchResults(results);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+  
+
+  const results = await onSearch(searchTerm);
+    setSearchResults(results || []);
   };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}> 
       <input
         type="text"
         placeholder="Search..."
         value={searchTerm}
         onChange={handleInputChange}
       />
-      <ul>
-        {searchResults.map((result) => (
-          <li key={result.id}>{result.track}</li>
-        ))}
-      </ul>
-    </div>
+      <button type="submit"> 
+        Search
+      </button>
+
+      {Array.isArray(searchResults) && searchResults.length > 0 ? (
+        <ul>
+          {searchResults.map((result) => (
+            <li key={result.id}>{result.track}</li>
+          ))}
+        </ul>
+      ) : null}
+    </form>
   );
 };
 

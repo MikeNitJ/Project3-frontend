@@ -38,6 +38,7 @@ const Signup = () => {
 
       if (response.ok) {
         console.log('User registered:', newUser);
+        window.location.href = '/';
       } else {
         console.error('Registration failed');
       }
