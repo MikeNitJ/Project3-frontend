@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import './SearchBar.css'
 import {FaSearch} from 'react-icons/fa'
 
-export const SearchBar = () => {
+export const SearchBar = ({setResults}) => {
   const [input, setInput] = useState("");
 
 
@@ -19,6 +19,14 @@ export const SearchBar = () => {
     .then((response) => response.json())
     .then((json) => {
       console.log(json)
+
+      const tracks = json.tracks.items;
+      console.log(tracks)
+
+      const results = tracks.filter((track) => {
+        return track && track.name.toLowerCase().includes(value)
+      });
+      setResults(results)
     });
   }
 
