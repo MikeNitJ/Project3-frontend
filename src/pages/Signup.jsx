@@ -53,21 +53,21 @@ const Signup = () => {
 
   return (
     <div>
-      <h2>Signup</h2>
+      <h2> Sign Up </h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name"> Name: </label>
           <input type="text" id="name" value={name} onChange={handleNameChange} />
         </div>
         <div>
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="username"> Username: </label>
           <input type="text" id="username" value={username} onChange={handleUsernameChange} />
         </div>
         <div>
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password"> Password: </label>
           <input type="password" id="password" value={password} onChange={handlePasswordChange} />
         </div>
-        <button type="submit">Signup</button>
+        <button type="submit"> Sign Up </button>
       </form>
     </div>
   );

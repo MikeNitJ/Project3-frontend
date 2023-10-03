@@ -1,8 +1,10 @@
+
 import React from 'react'
 import { Link } from 'react-router-dom'
 
 
 const Home = () => {
+
   return (
     <div>
         <h1>Decibel</h1>
@@ -15,8 +17,9 @@ const Home = () => {
             Sign Up
           </Link></button>
         </div>
+
     </div>
   );
 };
 
-export default Home
+export default Home;

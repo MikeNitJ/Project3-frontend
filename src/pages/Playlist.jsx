@@ -1,4 +1,5 @@
 import React from 'react'
+
 import SearchBar from '../components/SearchBar'
 
 const Playlist = () => {
@@ -11,6 +12,7 @@ const Playlist = () => {
 
       </div>
     </div>
+
   )
 }
 
