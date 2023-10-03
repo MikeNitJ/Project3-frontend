@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      <h1> Decibel </h1>
+      <img src="/D.png" alt="homeLogo" />
       
       <Outlet/>
       
