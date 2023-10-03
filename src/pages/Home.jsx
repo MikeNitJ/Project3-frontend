@@ -1,20 +1,23 @@
-import React from "react";
-import SearchBar from "../components/SearchBar";
+
+import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 const Home = () => {
-  const handleSearch = async (query) => {
-    const response = await fetch(`/search?q=${query}`);
-    if (response.ok) {
-      const data = await response.json();
-      return data.results;
-    } else {
-      return [];
-    }
-  };
+
   return (
     <div>
-      This is Home page
-      <SearchBar onSearch={handleSearch} />
+        <h1>Decibel</h1>
+        <p>Welcome to Decibel, a music player app</p>
+        <div className='home-button'>
+          <button><Link to='/login' className='login-btn'>
+            Log In
+          </Link></button>
+          <button><Link to='/signup' className='signup-btn'>
+            Sign Up
+          </Link></button>
+        </div>
+
     </div>
   );
 };

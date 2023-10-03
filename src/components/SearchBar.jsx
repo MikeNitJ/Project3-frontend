@@ -1,17 +1,32 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import './SearchBar.css'
+import {FaSearch} from 'react-icons/fa'
 
-const SearchBar = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+export const SearchBar = () => {
+  const [input, setInput] = useState("");
 
-  const handleInputChange = async (event) => {
-    const newSearchTerm = event.target.value;
-    setSearchTerm(newSearchTerm);
 
-    const results = await onSearch(newSearchTerm);
-    setSearchResults(results);
-  };
+  const fetchData = (value) => {
+    const accessToken = 'BQDVWr-sFU0a2RBCpETpamVE1yn8x-OE42Agc42AyvcaEYy5X06krcuoz2mQtoFWuOa2Oeg1IRJgisTe0M6tYsXsWiiQv-NRNfP0IUzcnedjEdLO9Z0'
+    
+    fetch(`https://api.spotify.com/v1/search?q=${value}&type=track`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      console.log(json)
+    });
+  }
+
+
+  const handleChange = (value) => {
+    setInput(value)
+    fetchData(value)
+  }
 
   const handleSearchClick = async () => {
     const results = await onSearch(searchTerm);
@@ -29,21 +44,16 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Search..."
-        value={searchTerm}
-        onChange={handleInputChange}
-      />
-      <button onClick={handleSearchClick}> Search </button>
-      <ul>
-        {searchResults.map((result) => (
-          <li key={result.id}>{result.track}</li>
-        ))}
-      </ul>
+
+    <div className="input-wrapper">
+      <FaSearch id='search-icon' />
+      <input 
+        placeholder="Type to search..." 
+        value={input} 
+        onChange={(e) => handleChange(e.target.value)}/>
+
     </div>
-  );
-};
+);
+}
 
 export default SearchBar;
