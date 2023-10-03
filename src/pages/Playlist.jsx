@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import SearchBar from '../components/SearchBar'
+import {SearchBar} from '../components/SearchBar'
+import SearchResultsList from '../components/SearchResultsList';
 
 const Playlist = () => {
+
+const [results, setResults] = useState ([]);
+
 
   return (
     <div className='App'>
       <div className='search-bar-container'>
-        <SearchBar/ >
-        <div>Search Results</div>
+        <SearchBar setResults={setResults}/>
+        <SearchResultsList results={results}/>
 
       </div>
     </div>
