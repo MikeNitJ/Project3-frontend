@@ -1,6 +1,22 @@
 import React from "react";
 import { useState } from "react";
 
+// const handleSearch = async (query) => {
+//   try {
+//     const response = await fetch(`/search?q=${query}`);
+//     if (response.ok) {
+//       const data = await response.json();
+//       return data.results;
+//     } else {
+//       return [];
+//     }
+
+//   } catch (error) {
+//     console.error('error searching for song:', error);
+//     return [];
+//   }
+// }
+
 const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
