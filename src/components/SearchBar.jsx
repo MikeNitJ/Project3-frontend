@@ -8,7 +8,7 @@ export const SearchBar = ({setResults}) => {
 
 
   const fetchData = (value) => {
-    const accessToken = 'BQCAOeOOlUahz84pLFB5quM4eP9q8SnKnRIBYfGrO6izgSba33QKhZv7m-bMd5aLOxkM6AVNK-XOhurbXTlcmDUYhMHy8texPbv7AUIYeju81T3NpzU'
+    const accessToken = 'BQBEdlkneOIPfhGbFM2ob3_FHc2gRitq1D1v-Srbnk7wTuAE7EEKC78v8QVy-mPcznqSsLYl5X3e3fRP_aP248v6QnIgDT0TqJAVLzBePx2eopdxCgc'
     
     fetch(`https://api.spotify.com/v1/search?q=${value}&type=track`, {
       method: 'GET',
