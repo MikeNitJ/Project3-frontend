@@ -1,10 +1,13 @@
 // Signup.jsx
 import React, { useState } from 'react';
+import {useNavigate} from "react-router-dom";
 
 const Signup = () => {
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate()
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -28,7 +31,7 @@ const Signup = () => {
     };
 
     try {
-      const response = await fetch('/api/signup', {
+      const response = await fetch('http://localhost:3040/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +41,7 @@ const Signup = () => {
 
       if (response.ok) {
         console.log('User registered:', newUser);
-        window.location.href = '/';
+        navigate("/")
       } else {
         console.error('Registration failed');
       }
