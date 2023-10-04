@@ -2,6 +2,7 @@ import {
     createBrowserRouter,
     createRoutesFromElements,
     Route,
+    Redirect,
   } from "react-router-dom"
 import App from "./App"
 import Login from "./pages/Login"

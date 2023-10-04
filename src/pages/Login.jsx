@@ -1,11 +1,13 @@
 // Login.jsx
 import React, { useState } from 'react';
+import {useNavigate} from "react-router-dom";
 
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const navigate = useNavigate()
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -24,7 +26,7 @@ const Login = () => {
     };
 
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch('http://localhost:3040/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -34,6 +36,7 @@ const Login = () => {
 
       if (response.ok) {
         console.log('User authenticated:', credentials);
+        navigate("/")
       } else {
         console.error('Authentication failed');
       }
