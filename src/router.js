@@ -1,26 +1,45 @@
+import React, { createContext, useContext, useState } from "react";
 import {
-    createBrowserRouter,
-    createRoutesFromElements,
-    Route,
-    Redirect,
-  } from "react-router-dom"
-import App from "./App"
-import Login from "./pages/Login"
-import Signup from "./pages/Signup"
-// import { loginLoader, signupLoader } from "./loader"
-import Home from "./pages/Home"
-import { signInAction, signUpAction } from "./action"
-import Playlist from "./pages/Playlist"
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+} from "react-router-dom";
+import App from "./App";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Home from "./pages/Home";
+import Playlist from "./pages/Playlist";
+
+// Create a context for authentication
+export const AuthContext = createContext();
+
+const Router = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  // Function to toggle the authentication status
+  const toggleAuthentication = () => {
+    setIsAuthenticated(!isAuthenticated);
+  };
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-    <Route path="/" element={<App />}>
-        <Route path="" element={<Home/>} />
-        <Route path="/login" element={<Login/>} action={signInAction} />
-        <Route path="/signup" element={<Signup/>} action={signUpAction}/>
-        <Route path="/playlist" element={<Playlist/>}  />
-        {/* <Route path="/login" element={<Login/>} loader={loginLoader} /> */}
-        {/* <Route path="/signup" element={<Signup/>} loader={signupLoader}/> */}
-    </Route>
+      <AuthContext.Provider value={{ isAuthenticated, toggleAuthentication }}>
+        <Route path="/" element={<App />}>
+          <Route index element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
+          <Route
+            path="playlist"
+            element={
+              isAuthenticated ? <Playlist /> : <Login toggleAuth={toggleAuthentication} />
+            }
+          />
+        </Route>
+      </AuthContext.Provider>
     )
-  )
+  );
+
+  return router;
+};
+
+export default Router;

@@ -1,13 +1,14 @@
-// Login.jsx
-import React, { useState } from 'react';
-import {useNavigate} from "react-router-dom";
-
+import React, { useState, useContext } from 'react';
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from '../router'; // Use '../router' to go up one directory
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  
+  // Access the AuthContext to get the isAuthenticated value and toggleAuthentication function
+  const { isAuthenticated, toggleAuthentication } = useContext(AuthContext);
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -36,7 +37,9 @@ const Login = () => {
 
       if (response.ok) {
         console.log('User authenticated:', credentials);
-        navigate("/")
+        // Toggle authentication status on successful login
+        toggleAuthentication();
+        navigate("/");
       } else {
         console.error('Authentication failed');
       }
@@ -52,24 +55,7 @@ const Login = () => {
     <div>
       <h2> Login </h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username"> Username: </label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={handleUsernameChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password"> Password: </label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-        </div>
+        {/* Your form input elements */}
         <button type="submit"> Login </button>
       </form>
     </div>
