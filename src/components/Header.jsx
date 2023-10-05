@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
-    <nav>
-      <Link to='/' className="home-btn">
+    <nav className='nav'>
+      <Link to='/' className="logo">
         Home
       </Link>
-      <Link to='/playlist' className="playlist-btn">
+      <Link to='/playlist' className="nav-links">
         Playlist
       </Link>
     </nav>
