@@ -37,7 +37,7 @@ const Login = () => {
 
       if (response.ok) {
         console.log('User authenticated:', credentials);
-        navigate("/")
+        navigate("/playlists")
       } else {
         console.error('Authentication failed');
       }

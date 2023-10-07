@@ -23,7 +23,7 @@ const router = createBrowserRouter(
     createRoutesFromElements(
     <Route path="/" element={<App />}>
         <Route path="" element={<Home/>} />
-        <Route path="/login" element={<Login/>}  />
+        <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<Signup/>} />
         <Route path="/playlist" element={<Playlist/>}  />
         <Route path="/playlists" element={<UserPlaylists/>} component={UserPlaylists}  />
@@ -33,10 +33,10 @@ const router = createBrowserRouter(
 
         
 
-        {/* <Route path="/login" element={<Login/>} loader={loginLoader} /> */}
-        {/* <Route path="/signup" element={<Signup/>} loader={signupLoader}/> */}
+
     </Route>
     )
   )
 
 export default router
+
