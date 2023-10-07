@@ -14,13 +14,10 @@ const Header = () => {
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/playlist">Playlist</a>
+          <a class="nav-link active" aria-current="page" href="/playlists">Playlist</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/create-playlist">Create Playlists</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/playlists/:id">Your Playlists</a>
         </li>
 
       </ul>
