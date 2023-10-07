@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom'
 
-const PlaylistDetails = ({ }) => {
+const PlaylistDetails = () => {
   const { playlistId } = useParams();
   const [playlist, setPlaylist] = useState({});
   const [name, setName] = useState('');
@@ -24,10 +24,13 @@ const PlaylistDetails = ({ }) => {
 
     fetchPlaylistDetails();
   }, [playlistId]);
+  console.log(playlistId)
 
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
+
+  
 
   const handleImageUrlChange = (e) => {
     setImageUrl(e.target.value);
@@ -52,30 +55,36 @@ const PlaylistDetails = ({ }) => {
     }
   };
 
-  const handleDeletePlaylist = async () => {
-    // Send a DELETE request to delete the playlist
-    const response = await fetch(`http://localhost:3040/playlists/${playlistId}`, {
-      method: 'DELETE',
-    });
 
-    console.log(playlistId)
-    if (response.ok) {
-        navigate ('/playlists')
-    } else {
-        console.error('error')
-    }
-  };
+
+const handleDeletePlaylist = async () => {
+  // Send a DELETE request to delete the playlist
+  const response = await fetch(`http://localhost:3040/playlists/${playlistId}`, {
+    method: 'DELETE',
+    headers: {
+      "Content-Type": "application/json",
+  },
+  'credentials': 'include',
+  });
+
+  console.log(playlistId)
+  if (response.ok) {
+    navigate ('/playlists')
+  } else {
+    console.error('error')
+  }
+};
 
   return (
     <div>
-      <h2>{playlist.name} Playlist</h2>
+      <h1>{playlist.name}</h1>
       <form onSubmit={handleUpdatePlaylist}>
         <div>
-          <label htmlFor="name">Name:</label>
+          <h4><label htmlFor="name" >Name:</label></h4>
           <input type="text" id="name" value={name} onChange={handleNameChange} />
         </div>
         <div>
-          <label htmlFor="imageUrl">Image URL:</label>
+          <h4><label htmlFor="imageUrl">Image URL:</label></h4>
           <input type="text" id="imageUrl" value={imageUrl} onChange={handleImageUrlChange} />
         </div>
         <button type="submit">Update Playlist</button>
