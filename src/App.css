@@ -1,26 +1,94 @@
-.header {
-  background-color: #333; /* Header background color */
-  color: #fff; /* Text color */
+.home-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.home-description {
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+.home-button {
+  margin-top: 30px;
+}
+
+.login-button,
+.signup-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-button:hover,
+.signup-button:hover {
+  background-color: #0056b3;
+}
+
+.login-btn,
+.signup-link {
+  text-decoration: none;
+  color: white;
+}
+
+.nav {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
 }
 
-/* Logo Styles */
-.logo a {
+.logo {
   text-decoration: none;
-  color: #fff; /* Logo text color */
   font-size: 24px;
+  color: #fff;
 }
 
-/* Navigation Links Styles */
-.nav-links a {
+.nav-links {
   text-decoration: none;
-  color: #fff; /* Navigation link text color */
-  margin-left: 20px; /* Spacing between links */
+  font-size: 18px;
+  color: #fff;
+  margin-left: 20px;
 }
 
-.nav-links a:hover {
-  text-decoration: underline; /* Underline on hover */
+.buttonsignup {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 90%;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
+
+.buttonsignup:hover {
+  background-color: #0056b3;
+}
+
+.search-result, .results-list {
+  flex: 50%;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: left;
+}
+
+.search-result span {
+  flex-grow: 1; /* Allow the text to take up all available space */
+  margin-right: 1rem; /* Add margin to separate text from the button */
+}
+
+.search-result button {
+  cursor: pointer;
+}
+

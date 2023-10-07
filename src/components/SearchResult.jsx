@@ -1,5 +1,4 @@
 import React from 'react';
-import './SearchResult.css';
 
 const SearchResult = ({ result, onAddToPlaylist }) => {
   const handleAddToPlaylist = () => {
@@ -7,9 +6,9 @@ const SearchResult = ({ result, onAddToPlaylist }) => {
   };
 
   return (
-    <div className="search-result" onClick={handleAddToPlaylist}>
+    <div className="search-result" onClick={handleAddToPlaylist} style={{padding: ".5px"}}>
       {result.name}
-      <button onClick={handleAddToPlaylist}>Add to Playlist</button>
+      <button onClick={handleAddToPlaylist} style={{padding: ".5px"}}> Add to Playlist </button>
     </div>
   );
 };

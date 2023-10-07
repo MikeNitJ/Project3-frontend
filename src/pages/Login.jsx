@@ -50,28 +50,30 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div style={{ textAlign: "center", padding: "20px" }}>
       <h2> Login </h2>
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form onSubmit={handleSubmit} style={{ maxWidth: "300px", margin: "0 auto" }}>
+        <div style={{ marginBottom: "10px" }}>
           <label htmlFor="username"> Username: </label>
           <input
             type="text"
             id="username"
             value={username}
             onChange={handleUsernameChange}
+            style={{ width: "90%", padding: "2px" }}
           />
         </div>
-        <div>
+        <div style={{ marginBottom: "10px" }}>
           <label htmlFor="password"> Password: </label>
           <input
             type="password"
             id="password"
             value={password}
             onChange={handlePasswordChange}
+            style={{ width: "90%", padding: "2px" }}
           />
         </div>
-        <button type="submit"> Login </button>
+        <button type="submit" className='buttonsignup'> Login </button>
       </form>
     </div>
   );
