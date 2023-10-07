@@ -41,7 +41,7 @@ const PlaylistManagement = ({ onAddToPlaylist}) => {
   return (
     <div>
       <div>
-        <h2>Add to your playlist!</h2>
+          <h2>songs</h2>
         <ul>
           {playlist.map((song) => (
             <li key={song.id}>{song.name}</li>

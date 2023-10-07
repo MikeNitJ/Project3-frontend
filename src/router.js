@@ -12,9 +12,6 @@ import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 // import { loginLoader, signupLoader } from "./loader"
 import Home from "./pages/Home"
-
-import { deleteAction, updateAction } from "./action"
-
 import Playlist from "./pages/MusicPage"
 import UserPlaylists from "./components/UserPlaylists"
 import CreatePlaylistForm from "./components/CreatePlaylistForm"
@@ -30,10 +27,10 @@ const router = createBrowserRouter(
         <Route path="/signup" element={<Signup/>} />
         <Route path="/playlist" element={<Playlist/>}  />
         <Route path="/playlists" element={<UserPlaylists/>} component={UserPlaylists}  />
-        <Route path="/playlists/:id" element={<PlaylistManagement/>} component={<PlaylistManagement/>}  />
+        <Route path="/playlists/:playlistId" element={<PlaylistManagement/>} component={<PlaylistManagement/>}  />
         <Route path="/create-playlist" element={<CreatePlaylistForm />}  />
-        <Route path="update/:id" action={updateAction}/>
-        <Route path="delete/:id" action={deleteAction}/>
+
+
         
 
 
