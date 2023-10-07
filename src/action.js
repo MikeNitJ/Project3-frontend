@@ -1,58 +1,33 @@
-import { redirect } from 'react-router-dom';
-const url = 'waiting on url'
+import { redirect, useParams } from 'react-router-dom';
 
-export const signInAction = async ({ request}) => {
-    const formData = await request.formData();
 
-    const user = {
-        username: formData.get('username'),
-        password: formData.get('password'),
-    };
-
-    try {
-        const response = await fetch('/api/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(user),
-        });
-
-        if (response.ok) {
-            console.log('user authenticated', user);
-        } else {
-            console.error('authentication failed');
-        }
-    } catch (error){
-        console.error('error: ', error)
-    }
-}
-
-export const signUpAction = async ({ request}) => {
-    const formData = await request.formData();
-
-    const user = {
+export const updateAction = async ({ params, request }) => {
+    const formData = await request.formData()
+    
+    const playlist = {
         name: formData.get('name'),
-        username: formData.get('username'),
-        password: formData.get('password'),
-    };
-
-    try {
-        const response = await fetch('/api/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(user),
-        });
-
-        if (response.ok) {
-            console.log('user authenticated', user);
-        } else {
-            console.error('authentication failed');
-        }
-    } catch (error){
-        console.error('error: ', error)
+        imageUrl: formData.get('imageUrl'),
     }
+    
+    await fetch(`http://localhost:3040/playlists/${playlistId}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        'credentials': 'include',
+        body: JSON.stringify({}),
+    })
+    return redirect('/playlists')
+};
+
+export const deleteAction = async ({params}) => {
+    await fetch(`http://localhost:3040/playlists/${playlistId}`, {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        'credentials': 'include',
+    })
+    return redirect('/playlists')
 }
 

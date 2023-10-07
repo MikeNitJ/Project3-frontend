@@ -58,6 +58,7 @@ const PlaylistDetails = ({ }) => {
       method: 'DELETE',
     });
 
+    console.log(playlistId)
     if (response.ok) {
         navigate ('/playlists')
     } else {

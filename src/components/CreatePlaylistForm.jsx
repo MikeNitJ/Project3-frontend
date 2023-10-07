@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const CreatePlaylistForm = () => {
+const CreatePlaylistForm = ({ }) => {
   const [name, setName] = useState('');
   const [imageUrl, setImageUrl] = useState('');
 
