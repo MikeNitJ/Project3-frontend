@@ -8,8 +8,11 @@ const Header = () => {
       <Link to='/' className="logo">
         Home
       </Link>
-      <Link to='/playlist' className="nav-links">
-        Playlist
+      <Link to='/playlists' className="nav-links">
+        Your Playlists
+      </Link>
+      <Link to='/create-playlist' className="nav-links">
+        Create a Playlist
       </Link>
     </nav>
   )
