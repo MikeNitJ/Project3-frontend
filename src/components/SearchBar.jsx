@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import './SearchBar.css'
 import {FaSearch} from 'react-icons/fa'
 
 export const SearchBar = ({setResults}) => {
@@ -8,7 +7,7 @@ export const SearchBar = ({setResults}) => {
 
 
   const fetchData = (value) => {
-    const accessToken = 'BQBiHrnWLsTLb_DzmnY8VOXgOEiNRTsTM1rzHeyzNpIAYqeNIjnzFA96T5tb0PIZoLopXHQNLJeRludB5fgAYSbfPpBkSjDPL4iZx4iSrUg0ghW_Oww'
+    const accessToken = 'BQD_Y4DItMYvq5GtGpM0QB_Bmkm6pEm48zyLH3bA8TUQZ8bHI-I7K1PI4oXDMeZGdUyg453f8rPQBX9T3K7QTRNyJE3EggPLV9gIWjdTnKiJ5LerCXk'
     
     fetch(`https://api.spotify.com/v1/search?q=${value}&type=track`, {
       method: 'GET',

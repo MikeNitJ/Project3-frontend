@@ -17,12 +17,12 @@ const Playlist = () => {
 
   return (
     <div className="App">
-      <div className="search-bar-container">
+      <div className="playlistcontainer">
         <SearchBar setResults={setResults} />
         <SearchResultsList results={results} onAddToPlaylist={addToPlaylist} />
       </div>
 
-      <div className="playlist-container">
+      <div className="playlistcontainer2">
         <h2>Playlist</h2>
         {playlist.map((track) => (
           <div
@@ -31,7 +31,7 @@ const Playlist = () => {
             onClick={() => removeFromPlaylist(track)}
           >
             {track.name}
-            <button onClick={() => removeFromPlaylist(track)}> Remove </button>
+            <button onClick={() => removeFromPlaylist(track)} style={{padding: ".5px"}}> Remove </button>
           </div>
         ))}
       </div>
