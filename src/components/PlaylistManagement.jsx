@@ -1,37 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import SearchBar from './SearchBar'; 
 import SearchResultsList from './SearchResultsList';
+import SearchResult from './SearchResult';
+import PlaylistDetails from './PlaylistDetails';
 
-const PlaylistManagement = () => {
-  const [playlists, setPlaylists] = useState([]);
-  const [activePlaylist, setActivePlaylist] = useState('');
+const PlaylistManagement = ({ onAddToPlaylist}) => {
+  const { playlistId } = useParams();
   const [results, setResults] = useState([]);
+  const [playlistName, setPlaylistName] = useState('');
+  const [playlist, setPlaylist] = useState([]);
 
-  // Add a song to the active playlist
-  const addSongToPlaylist = (song, {onAddToPlaylist}) => {
-    if (activePlaylist) {
-      const updatedPlaylist = [...activePlaylist, song];
-      setActivePlaylist(updatedPlaylist);
-    }
+
+  const addToPlaylist = (song) => {
+    setPlaylist([...playlist, song]);
   };
-  console.log(activePlaylist)
+
+  // Fetch the playlist name based on playlistId
+  useEffect(() => {
+    const fetchPlaylistName = async () => {
+      try {
+        const response = await fetch(`http://localhost:3040/playlists/${playlistId}`);
+        if (response.ok) {
+          const data = await response.json();
+          setPlaylistName(data.name);
+          setPlaylist(data.songs); // Assuming your playlist object has a "songs" property
+        } else {
+          console.error('Failed to fetch playlist name');
+        }
+      } catch (error) {
+        console.error('Error fetching playlist name:', error);
+      }
+    };
+
+    if (playlistId) {
+      fetchPlaylistName();
+    }
+  }, [playlistId]);
 
   return (
     <div>
-      <h2>{activePlaylist ? activePlaylist.name : 'Select a Playlist'}</h2>
-
       <div>
-        <h3>Your Playlist</h3>
+        <h2>Add to your playlist!</h2>
         <ul>
-          {activePlaylist &&
-            activePlaylist.map((song) => (
-              <li key={song.id}>{song.name}</li>
-            ))}
+          {playlist.map((song) => (
+            <li key={song.id}>{song.name}</li>
+          ))}
         </ul>
       </div>
 
-      <SearchBar onAddToPlaylist={addSongToPlaylist} setResults={setResults} />
-      <SearchResultsList results={results} />
+      <PlaylistDetails  />
+      <SearchBar setResults={setResults} />
+      <SearchResultsList results={results} onAddToPlaylist={addToPlaylist} />
+
     </div>
   );
 };

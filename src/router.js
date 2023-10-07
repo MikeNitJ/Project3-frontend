@@ -4,18 +4,23 @@ import {
     Route,
     Routes,
     Redirect,
+
   } from "react-router-dom"
+  
 import App from "./App"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 // import { loginLoader, signupLoader } from "./loader"
 import Home from "./pages/Home"
 
+import { deleteAction, updateAction } from "./action"
+
 import Playlist from "./pages/MusicPage"
 import UserPlaylists from "./components/UserPlaylists"
 import CreatePlaylistForm from "./components/CreatePlaylistForm"
 import PlaylistDetails from "./components/PlaylistDetails"
 import PlaylistManagement from "./components/PlaylistManagement"
+
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -27,6 +32,9 @@ const router = createBrowserRouter(
         <Route path="/playlists" element={<UserPlaylists/>} component={UserPlaylists}  />
         <Route path="/playlists/:id" element={<PlaylistManagement/>} component={<PlaylistManagement/>}  />
         <Route path="/create-playlist" element={<CreatePlaylistForm />}  />
+        <Route path="update/:id" action={updateAction}/>
+        <Route path="delete/:id" action={deleteAction}/>
+        
 
 
     </Route>
