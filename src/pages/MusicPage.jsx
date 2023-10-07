@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { SearchBar } from "../components/SearchBar";
 import SearchResultsList from "../components/SearchResultsList";
 
-const Playlist = () => {
+const MusicPage = () => {
   const [results, setResults] = useState([]);
   const [playlist, setPlaylist] = useState([]);
 
@@ -39,4 +39,4 @@ const Playlist = () => {
   );
 };
 
-export default Playlist;
+export default MusicPage;
